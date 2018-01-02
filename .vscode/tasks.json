@@ -8,8 +8,8 @@
             "type": "shell",
             "command": "elm-make",
             "args": [
-                "--output elm.js",
-                "main.elm"
+                "--output src/elm.js",
+                "src/main.elm"
             ],
             "group": {
                 "kind": "build",
