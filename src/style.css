@@ -1,0 +1,16 @@
+.buttons {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    width: 120px;
+}
+
+.buttons button{
+    color: #111;
+    background-color: #fff;
+    padding:1px;
+    display: inline-block;
+    width: 15px;
+    text-decoration: none;
+    border: none;
+    background-color: #ddd;
+}
