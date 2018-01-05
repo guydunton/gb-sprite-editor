@@ -5,7 +5,7 @@ cache:
     - sysconfcpus
 
 os:
-  - osx
+  - linux
 
 env:
   matrix:
