@@ -5,7 +5,6 @@ cache:
     - sysconfcpus
 
 os:
-  - linux
   - osx
 
 env:
@@ -33,12 +32,11 @@ install:
   - nvm use $TARGET_NODE_VERSION
   - node --version
   - npm --version
-  - npm install -g elm@0.18.0 elm-test@0.18.12 elm-format@exp
+  - npm install -g elm@0.18.0
   - mv $(npm config get prefix)/bin/elm-make $(npm config get prefix)/bin/elm-make-old
   - printf '%s\n\n' '#!/bin/bash' 'echo "Running elm-make with sysconfcpus -n 2"' '$TRAVIS_BUILD_DIR/sysconfcpus/bin/sysconfcpus -n 2 elm-make-old "$@"' > $(npm config get prefix)/bin/elm-make
   - chmod +x $(npm config get prefix)/bin/elm-make
   - travis_retry elm-package install --yes
 
 script:
-  - elm-format --validate src
   - elm-make --output=/dev/null --yes src/main.elm
