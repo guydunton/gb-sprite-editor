@@ -36,7 +36,7 @@ install: # install specific versions of elm & elm-test
 
 script:
   - elm-make src/Main.elm --output=build/src/elm.js
-  - deploy.sh
+  - sh deploy.sh
 
 deploy:
   provider: pages
