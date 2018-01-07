@@ -36,9 +36,7 @@ install: # install specific versions of elm & elm-test
 
 script:
   - elm-make src/Main.elm --output=build/src/elm.js
-  - cp index.html build/index.html
-  - mkdir build/styles
-  - cp styles/style.css build/styles/style.css
+  - deploy.sh
 
 deploy:
   provider: pages
