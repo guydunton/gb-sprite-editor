@@ -35,4 +35,13 @@ install: # install specific versions of elm & elm-test
   - travis_retry elm package install --yes # install main project dependencies
 
 script:
-  - elm-make src/Main.elm --output=/dev/null
+  - elm-make src/Main.elm --output=build/elm.js
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $github_token
+  local_dir: build
+  on:
+    branch: master
+
