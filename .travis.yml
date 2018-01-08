@@ -35,8 +35,11 @@ install: # install specific versions of elm & elm-test
   - travis_retry elm package install --yes # install main project dependencies
 
 script:
-  - elm-make src/Main.elm --output=build/src/elm.js
-  - sh deploy.sh
+  - elm-make src/Main.elm --yes --output=build/src/elm.js
+  # This is for the deployment
+  - cp index.html build/index.html
+  - mkdir build/styles
+  - cp styles/style.css build/styles/style.css
 
 deploy:
   provider: pages
