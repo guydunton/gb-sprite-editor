@@ -1,11 +1,7 @@
 module Model exposing (..)
 
-import Array exposing (..)
-import Maybe exposing (andThen, withDefault)
+import Matrix exposing (..)
 import Bitwise exposing (shiftLeftBy)
-
-
--- MODEL
 
 
 type Binary
@@ -21,7 +17,7 @@ type Color
 
 
 type alias Canvas =
-    List (List Color)
+    Matrix Color
 
 
 type alias HexCharacter =
@@ -40,7 +36,7 @@ type alias ColorChangeEvent =
 
 
 type alias Model =
-    { grid : List (List Color)
+    { grid : Canvas
     , brush : Color
     }
 
@@ -66,43 +62,6 @@ init =
 type Msg
     = ColorChanged ColorChangeEvent
     | BrushChanged Color
-
-
-listSet : Int -> a -> List a -> List a
-listSet index val list =
-    list
-        |> Array.fromList
-        |> Array.set index val
-        |> Array.toList
-
-
-setMatrix : Int -> Int -> Color -> Canvas -> Canvas
-setMatrix x y col grid =
-    let
-        line =
-            listAt y grid
-    in
-        case line of
-            Nothing ->
-                grid
-
-            Just data ->
-                grid
-                    |> listSet y (listSet x col data)
-
-
-listAt : Int -> List a -> Maybe a
-listAt index list =
-    list
-        |> Array.fromList
-        |> Array.get index
-
-
-matrixAt : Int -> Int -> Canvas -> Color
-matrixAt x y canvas =
-    listAt y canvas
-        |> andThen (listAt x)
-        |> withDefault W
 
 
 splitInTwo : List a -> List (List a)
@@ -234,11 +193,13 @@ convertBinaryLineToHex line =
             |> List.reverse
 
 
-createHexOutput : Model -> String
+createHexOutput : Model -> List String
 createHexOutput model =
     model.grid
         |> List.map convertLineToBinary
         |> List.map convertBinaryLineToHex
         |> List.concat
         |> List.map (\x -> "$" ++ x)
-        |> String.join ","
+        |> splitInTwo
+        |> List.map (\x -> String.join "," x)
+        |> List.map (\x -> "DB " ++ x)
