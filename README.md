@@ -4,10 +4,12 @@
 
 This project allows someone to edit a sprite for the gameboy which outputs the hex required to put the sprite in a gameboy game.
 
+[Live Demo](https://www.guydunton.com/gb-sprite-editor)
+
 ## Warning
 This project is currently a work in progress. The planned functionality is:
 - [x] Text input for selection
-- [ ] Color display
+- [x] Color display
 - [ ] Color based input
 - [ ] Small sprite output
 - [ ] Load from hex
