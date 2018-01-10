@@ -15,7 +15,7 @@ createHexOutput canvas =
         |> List.concat
         |> List.map (\x -> "$" ++ x)
         |> splitInTwo
-        |> List.map (\x -> String.join "," x)
+        |> List.map (\x -> String.join ", " x)
         |> List.map (\x -> "DB " ++ x)
 
 
