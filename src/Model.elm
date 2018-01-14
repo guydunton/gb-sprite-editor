@@ -9,6 +9,7 @@ import Matrix exposing (Matrix)
 type Msg
     = ColorChanged ColorChangeEvent
     | BrushChanged Color
+    | Noop
 
 
 type Color

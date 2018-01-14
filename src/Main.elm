@@ -1,7 +1,7 @@
 module Main exposing (main)
 
 import Matrix exposing (setMatrix)
-import Model exposing (Model, Msg, init)
+import Model exposing (Model, Msg(..), init)
 import View exposing (view)
 import Html exposing (program)
 
@@ -26,8 +26,11 @@ main =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        Model.ColorChanged e ->
+        ColorChanged e ->
             ( { model | grid = (setMatrix e.x e.y e.color model.grid) }, Cmd.none )
 
-        Model.BrushChanged b ->
+        BrushChanged b ->
             ( { model | brush = b }, Cmd.none )
+
+        Noop ->
+            ( model, Cmd.none )

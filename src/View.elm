@@ -7,6 +7,7 @@ import Html exposing (..)
 import Html.Events exposing (..)
 import Html.Attributes exposing (..)
 import Maybe exposing (..)
+import Json.Decode as Json
 
 
 -- Exposed Functions
@@ -34,13 +35,23 @@ colorToHex color =
             "#9bbc0f"
 
         L ->
-            "#8bac0f"
+            "#83a30e"
 
         D ->
             "#306230"
 
         B ->
             "#0f380f"
+
+
+onTouchStart : a -> Attribute a
+onTouchStart action =
+    on "touchstart" (Json.succeed action)
+
+
+onTouchEnd : a -> Attribute a
+onTouchEnd action =
+    on "touchend" (Json.succeed action)
 
 
 createButton : Model -> Int -> Html Msg
@@ -55,7 +66,13 @@ createButton model index =
         color =
             (matrixAt x y model.grid) |> withDefault W |> colorToHex
     in
-        button [ onClick (ColorChanged (ColorChangeEvent x y model.brush)), style [ ( "backgroundColor", color ) ] ]
+        button
+            [ onMouseDown (ColorChanged (ColorChangeEvent x y model.brush))
+            , style [ ( "backgroundColor", color ) ]
+            , onMouseUp Noop
+            , onTouchStart (ColorChanged (ColorChangeEvent x y model.brush))
+            , onTouchEnd Noop
+            ]
             []
 
 
