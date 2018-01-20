@@ -32,5 +32,8 @@ update msg model =
         BrushChanged b ->
             ( { model | brush = b }, Cmd.none )
 
+        FillGrid ->
+            ( { model | grid = Model.fillCanvas model.brush }, Cmd.none )
+
         Noop ->
             ( model, Cmd.none )

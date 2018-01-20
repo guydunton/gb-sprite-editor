@@ -10,35 +10,70 @@ body {
 
 .pallete {
     margin: auto;
+    width: 30vw;
+    display: grid;
+    grid-template-rows: repeat(2, 4vmin);
+    grid-template-columns: repeat(4, 4vmin);
+    grid-row-gap: 15px;
+    grid-column-gap: 1vw;
+}
+
+.pallete h2 {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    margin: 0;
+}
+
+.pallete button {
     width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.pallete-button-border {
+    width: 100%;
+    height: 100%;
 }
 
 .buttons {
+    margin: auto;
     display: grid;
-    grid-template-columns: repeat(8, 8vmin);
-    grid-template-rows: repeat(8, 8vmin);
+    grid-template-columns: repeat(8, 1fr);
     width: 80vw;
+    height: 80vw;
+    max-width: 400px;
+    max-height: 400px;
     grid-row-gap: 0px;
     grid-column-gap: 0px;
 }
 
 .buttons button{
-    color: #111;
-    text-decoration: none;
     width: 100%;
     height: 100%;
 }
 
 .output {
+    margin: auto;
     border: 1px solid black;
     border-radius: 2px;
     margin-top: 20px;
-    width: 100%;
+    width: 80vw;
+    max-width: 400px;
     padding: 5px 5px;
     font-family: "Courier New", Courier, monospace;
     font-size: 10pt;
 }
 
+.tools {
+    align-content: stretch;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.tools button {
+    width: 50px;
+}
+
 .output p {
-    margin:2pt;
+    margin: 2pt;
 }

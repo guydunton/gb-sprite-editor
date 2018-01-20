@@ -9,6 +9,7 @@ import Matrix exposing (Matrix)
 type Msg
     = ColorChanged ColorChangeEvent
     | BrushChanged Color
+    | FillGrid
     | Noop
 
 
@@ -51,7 +52,12 @@ splitInTwo list =
 
 init : ( Model, Cmd Msg )
 init =
-    ( Model createCanvas B, Cmd.none )
+    ( Model (fillCanvas W) B, Cmd.none )
+
+
+fillCanvas : Color -> Canvas
+fillCanvas color =
+    List.repeat 8 color |> List.repeat 8
 
 
 
