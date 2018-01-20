@@ -105,8 +105,7 @@ createPalletButton color model =
 createPallete : Model -> Html Msg
 createPallete model =
     div [ class "pallete" ]
-        [ h2 [] [ text "Pallete" ]
-        , createPalletButton W model
+        [ createPalletButton W model
         , createPalletButton L model
         , createPalletButton D model
         , createPalletButton B model
