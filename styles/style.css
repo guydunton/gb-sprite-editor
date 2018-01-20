@@ -8,43 +8,38 @@ body {
     margin: auto;
 }
 
+h1 {
+    margin-bottom: 10px;
+}
+
 .pallete {
-    margin: auto;
-    width: 30vw;
+    width: 40vw;
+    max-width: 200px;
     display: grid;
-    grid-template-rows: repeat(2, 4vmin);
-    grid-template-columns: repeat(4, 4vmin);
-    grid-row-gap: 15px;
-    grid-column-gap: 1vw;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .pallete h2 {
-    grid-column-start: 1;
-    grid-column-end: 5;
-    margin: 0;
+    grid-column: 1 / 5;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    justify-self: center;
 }
 
 .pallete button {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-}
-
-.pallete-button-border {
-    width: 100%;
-    height: 100%;
+    width: 10vw;
+    height: 10vw;
+    max-height: 50px;
+    max-width: 50px;
 }
 
 .buttons {
-    margin: auto;
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     width: 80vw;
     height: 80vw;
     max-width: 400px;
     max-height: 400px;
-    grid-row-gap: 0px;
-    grid-column-gap: 0px;
 }
 
 .buttons button{
@@ -53,7 +48,6 @@ body {
 }
 
 .output {
-    margin: auto;
     border: 1px solid black;
     border-radius: 2px;
     margin-top: 20px;
@@ -65,7 +59,8 @@ body {
 }
 
 .tools {
-    align-content: stretch;
+    width: 80vw;
+    max-width: 400px;
     margin-top: 10px;
     margin-bottom: 10px;
 }

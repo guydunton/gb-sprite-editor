@@ -1,13 +1,13 @@
 module View exposing (view)
 
-import Matrix exposing (matrixAt)
-import Model exposing (Color(..), Model, Msg(..), ColorChangeEvent, Canvas)
-import Sprite exposing (createHexOutput)
 import Html exposing (..)
-import Html.Events exposing (..)
 import Html.Attributes exposing (..)
-import Maybe exposing (..)
+import Html.Events exposing (..)
 import Json.Decode as Json
+import Matrix exposing (matrixAt)
+import Maybe exposing (..)
+import Model exposing (Canvas, Color(..), ColorChangeEvent, Model, Msg(..))
+import Sprite exposing (createHexOutput)
 
 
 -- Exposed Functions
@@ -15,7 +15,7 @@ import Json.Decode as Json
 
 view : Model -> Html Msg
 view model =
-    div []
+    div [ class "container" ]
         [ h1 [] [ text "Gameboy Sprite Editor" ]
         , createPallete model
         , createTools
@@ -59,21 +59,21 @@ createButton : Model -> Int -> Html Msg
 createButton model index =
     let
         x =
-            (index % 8)
+            index % 8
 
         y =
-            (index // 8)
+            index // 8
 
         color =
-            (matrixAt x y model.grid) |> withDefault W |> colorToHex
+            matrixAt x y model.grid |> withDefault W |> colorToHex
     in
-        button
-            [ onClick (ColorChanged (ColorChangeEvent x y model.brush))
-            , style [ ( "backgroundColor", color ) ]
-            , onTouchStart (ColorChanged (ColorChangeEvent x y model.brush))
-            , onTouchEnd Noop
-            ]
-            []
+    button
+        [ onClick (ColorChanged (ColorChangeEvent x y model.brush))
+        , style [ ( "backgroundColor", color ) ]
+        , onTouchStart (ColorChanged (ColorChangeEvent x y model.brush))
+        , onTouchEnd Noop
+        ]
+        []
 
 
 createViewGrid : Model -> List (Html Msg)
@@ -91,15 +91,15 @@ createPalletButton color model =
             else
                 "white"
     in
-        button
-            [ onClick (BrushChanged color)
-            , style
-                [ ( "background-color", (colorToHex color) )
-                , ( "border", "2px solid " ++ s )
-                , ( "border-radius", "3px" )
-                ]
+    button
+        [ onClick (BrushChanged color)
+        , style
+            [ ( "background-color", colorToHex color )
+            , ( "border", "2px solid " ++ s )
+            , ( "border-radius", "3px" )
             ]
-            []
+        ]
+        []
 
 
 createPallete : Model -> Html Msg
@@ -123,7 +123,7 @@ createTools =
 createOutput : Canvas -> Html Msg
 createOutput canvas =
     div [ class "output" ]
-        ((createHexOutput canvas)
+        (createHexOutput canvas
             |> List.map (\x -> Html.p [] [ text x ])
             |> (::) (Html.p [] [ text "Output" ])
         )
