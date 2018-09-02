@@ -1,7 +1,8 @@
-module Matrix exposing (Matrix, setMatrix, matrixAt)
+module Matrix exposing (Matrix, matrixAt, setMatrix)
 
 import Array
 import Maybe exposing (andThen)
+
 
 
 -- Exposed Type
@@ -27,13 +28,13 @@ setMatrix x y val grid =
         line =
             listAt y grid
     in
-        case line of
-            Nothing ->
-                grid
+    case line of
+        Nothing ->
+            grid
 
-            Just data ->
-                grid
-                    |> listSet y (listSet x val data)
+        Just data ->
+            grid
+                |> listSet y (listSet x val data)
 
 
 
