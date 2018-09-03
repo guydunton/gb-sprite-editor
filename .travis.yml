@@ -17,7 +17,7 @@ install: # install specific versions of elm & elm-test
   - npm install -g elm@0.19.0
 
 script:
-  - mmkdir build
+  - mkdir build
   - mkdir build/src
   - mkdir build/styles
   - elm make --optimize --output=build/src/elm.js src/Main.elm
