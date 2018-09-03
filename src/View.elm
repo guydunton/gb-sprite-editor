@@ -15,7 +15,7 @@ import Sprite exposing (createHexOutput)
 
 view : ( Model, Cmd Msg ) -> Html Msg
 view ( model, cmd ) =
-    div []
+    div [ class "container" ]
         [ h1 [] [ text "Gameboy Sprite Editor" ]
         , createPallete model
         , createTools
