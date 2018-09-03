@@ -1,7 +1,8 @@
 module Sprite exposing (createHexOutput)
 
-import Model exposing (Canvas, Color(..), Model, splitInTwo)
 import Bitwise exposing (shiftLeftBy)
+import Model exposing (Canvas, Color(..), Model, splitInTwo)
+
 
 
 -- Exposed Functions
@@ -112,14 +113,14 @@ binToHex bits =
                     []
 
                 val :: rest ->
-                    (shiftLeftBy (List.length rest) val) :: (shiftValuesByLocation rest)
+                    shiftLeftBy (List.length rest) val :: shiftValuesByLocation rest
     in
-        bits
-            |> List.map bitToInt
-            |> shiftValuesByLocation
-            |> List.sum
-            |> toHex
-            |> String.fromChar
+    bits
+        |> List.map bitToInt
+        |> shiftValuesByLocation
+        |> List.sum
+        |> toHex
+        |> String.fromChar
 
 
 convertLineToBinary : List Color -> List ( Binary, Binary )
@@ -156,5 +157,5 @@ convertBinaryLineToHex line =
         ( mostSignificantBits, leastSignificantBits ) =
             List.unzip line
     in
-        [ hexFromBinary mostSignificantBits, hexFromBinary leastSignificantBits ]
-            |> List.reverse
+    [ hexFromBinary mostSignificantBits, hexFromBinary leastSignificantBits ]
+        |> List.reverse

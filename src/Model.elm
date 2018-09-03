@@ -1,6 +1,7 @@
-module Model exposing (..)
+module Model exposing (Canvas, Color(..), ColorChangeEvent, Model, Msg(..), createCanvas, fillCanvas, init, splitInTwo)
 
 import Matrix exposing (Matrix)
+
 
 
 -- Exposed Types
@@ -45,9 +46,9 @@ splitInTwo : List a -> List (List a)
 splitInTwo list =
     let
         partSize =
-            (List.length list) // 2
+            List.length list // 2
     in
-        [ (List.take partSize list), (List.drop partSize list) ]
+    [ List.take partSize list, List.drop partSize list ]
 
 
 init : ( Model, Cmd Msg )

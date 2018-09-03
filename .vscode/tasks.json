@@ -6,11 +6,12 @@
         {
             "label": "make",
             "type": "shell",
-            "command": "elm-make",
+            "command": "elm",
             "args": [
+                "make",
+                "--optimize",
                 "src/Main.elm",
-                "--yes",
-                "--output src/elm.js"
+                "--output=src/elm.js"
             ],
             "group": {
                 "kind": "build",

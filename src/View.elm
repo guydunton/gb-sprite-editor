@@ -13,8 +13,8 @@ import Sprite exposing (createHexOutput)
 -- Exposed Functions
 
 
-view : Model -> Html Msg
-view model =
+view : ( Model, Cmd Msg ) -> Html Msg
+view ( model, cmd ) =
     div [ class "container" ]
         [ h1 [] [ text "Gameboy Sprite Editor" ]
         , createPallete model
@@ -59,8 +59,7 @@ createButton : Model -> Int -> Html Msg
 createButton model index =
     let
         x =
-            index % 8
-
+            modBy 8 index
         y =
             index // 8
 
@@ -69,7 +68,7 @@ createButton model index =
     in
     button
         [ onClick (ColorChanged (ColorChangeEvent x y model.brush))
-        , style [ ( "backgroundColor", color ) ]
+        , style "backgroundColor" color
         , onTouchStart (ColorChanged (ColorChangeEvent x y model.brush))
         , onTouchEnd Noop
         ]
@@ -88,16 +87,15 @@ createPalletButton color model =
         s =
             if color == model.brush then
                 "black"
+
             else
                 "white"
     in
     button
         [ onClick (BrushChanged color)
-        , style
-            [ ( "background-color", colorToHex color )
-            , ( "border", "2px solid " ++ s )
-            , ( "border-radius", "3px" )
-            ]
+        , style "background-color" (colorToHex color)
+        , style "border" ("2px solid " ++ s)
+        , style "border-radius" "3px"
         ]
         []
 

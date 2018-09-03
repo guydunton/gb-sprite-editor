@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <div id="main"></div>
+	<div id="elm"></div>
     <script src="src/elm.js"></script>
-    <script>
-        var node = document.getElementById('main');
-        var app = Elm.Main.embed(node);
-    </script>
+  	<script>
+  		var app = Elm.Main.init({
+    		node: document.getElementById('elm')
+  		});
+  </script>
 </body>
 </html>
