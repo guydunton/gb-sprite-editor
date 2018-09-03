@@ -10,7 +10,6 @@ import Model exposing (Canvas, Color(..), ColorChangeEvent, Model, Msg(..))
 import Sprite exposing (createHexOutput)
 
 
-
 -- Exposed Functions
 
 
@@ -61,7 +60,6 @@ createButton model index =
     let
         x =
             modBy 8 index
-
         y =
             index // 8
 
@@ -105,8 +103,7 @@ createPalletButton color model =
 createPallete : Model -> Html Msg
 createPallete model =
     div [ class "pallete" ]
-        [ h2 [] [ text "Pallete" ]
-        , createPalletButton W model
+        [ createPalletButton W model
         , createPalletButton L model
         , createPalletButton D model
         , createPalletButton B model
