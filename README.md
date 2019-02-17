@@ -1,6 +1,6 @@
 # Gameboy Sprite Editor
 
-[![Build Status](https://travis-ci.org/gdunton/gb-sprite-editor.svg?branch=master)](https://travis-ci.org/gdunton/gb-sprite-editor)
+[![Build Status](https://travis-ci.org/guydunton/gb-sprite-editor.svg?branch=master)](https://travis-ci.org/guydunton/gb-sprite-editor)
 
 This project allows someone to edit a sprite for the gameboy which outputs the hex required to put the sprite in a gameboy game.
 
